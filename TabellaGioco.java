@@ -25,12 +25,15 @@ public class TabellaGioco extends JFrame {
 	//creazione variabili
 	
 	private JPanel contentPane;
+	 
+	LinkedList<JButton> elencobottone = new LinkedList<>();
+	 LinkedList<String> elencoParole = new LinkedList<>();
 	 LinkedList<Integer> listint = new LinkedList<Integer>();
 	 ArrayList<String[]> listadado = new ArrayList<>();
 	 ArrayList<String> elenco = new ArrayList<>();
 	 ArrayList<String> stringabottoni = new ArrayList<>();
 	 ArrayList<JButton> bottonevalido= new ArrayList<>(); 
-	 LinkedList<JButton> elencobottone = new LinkedList<>();
+	
 	 
 	  String random = null;
 	  int numero;
@@ -422,6 +425,8 @@ public class TabellaGioco extends JFrame {
 				
 				String parola = textField_1.getText();
 				textArea.append("\n" + parola);
+				elencoParole.add(parola);
+				int size = elencoParole.size();
 				textField_1.setText(null);
 			}
 		});
@@ -501,7 +506,7 @@ public class TabellaGioco extends JFrame {
 	  
    
   // carica tutti i bottoni in una lista - 	
-  // questo metodo serve perchè quando analizziamo i vari bottoni la lista
+  // questo metodo serve perchÃ¨ quando analizziamo i vari bottoni la lista
   //viene anche svuotata
   public void carica() {
 	elencobottone.add(btn1);
