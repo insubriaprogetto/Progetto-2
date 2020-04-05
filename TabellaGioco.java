@@ -1,4 +1,4 @@
-package progettoProvalabB;
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import java.awt.Font;
 
 public class TabellaGioco extends JFrame {
 
@@ -184,9 +185,11 @@ public class TabellaGioco extends JFrame {
 		contentPane.setLayout(null);
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(UIManager.getColor("Button.background"));
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Francesco\\Desktop\\unnamed.png"));
-		lblNewLabel.setBounds(-16, 0, 488, 132);
+		JLabel lblNewLabel = new JLabel("                       IL PAROLIERE");
+		lblNewLabel.setBackground(Color.ORANGE);
+		lblNewLabel.setFont(new Font("Georgia Pro Black", Font.BOLD, 23));
+		lblNewLabel.setIcon(null);
+		lblNewLabel.setBounds(-26, 0, 974, 132);
 		contentPane.add(lblNewLabel);
 		
 		
@@ -612,7 +615,7 @@ public void posizione(int x, int y) {
  
 	
 		
-	
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -627,6 +630,8 @@ public void posizione(int x, int y) {
 			}
 		});
 	}
+	
+	*/
 }
 
 
