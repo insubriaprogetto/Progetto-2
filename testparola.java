@@ -9,23 +9,27 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
+import javax.swing.JList;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 public class testparola extends JFrame {
 
 	private JPanel contentPane;
 	ArrayList<String> elencoVerifica = new ArrayList<>();
-	
-	JTextArea textArea = new JTextArea();
-	
-	
+	List<Definition> definitionLista;
+	DefaultListModel<Term> model = new DefaultListModel<>();
 
 	public testparola(ArrayList<String> cs) {
 		
@@ -36,23 +40,30 @@ public class testparola extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(24, 32, 267, 218);
+		contentPane.add(panel);
 		
-		textArea.setEditable(false);
+		JList<Term> list = new JList<>( model );
+		list.setBackground(SystemColor.menu);
+		panel.add(list);
 		
+		JLabel lblNewLabel = new JLabel("PLAYER 1");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel.setBounds(82, 0, 107, 29);
+		contentPane.add(lblNewLabel);
 		
-		textArea.setBounds(10, 11, 414, 239);
-		contentPane.add(textArea);
-		textArea.append("---PLAYER1---");
-		textArea.append("\n");
-		textArea.append("");
-		
+		int cont = 1;
 		int size = cs.size();
 		String testo;
 		
 		for (int i = 0; i < size; i++) {
 			testo = cs.get(i);
 			try {
+				String contS = String.valueOf(cont);
+				
 				checkparola(testo);
+				cont ++;
 			} catch (ZipException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -63,7 +74,7 @@ public class testparola extends JFrame {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//textArea.append("\n " + cs.get(i));
+			
 		    }
 		
 		
@@ -87,45 +98,23 @@ public class testparola extends JFrame {
         
         BufferedReader  in = new BufferedReader(new InputStreamReader(zf.getInputStream(zf.getEntry("dictionaries/th_it_IT_v2.dat")),"ISO8859-15"));
        
-        
+     
         String termine = parola;
-	    String giusta = null;
-        String temp;
-        int cont = 0;
-        
-
-	    /*  
-        while( (temp= in.readLine()) != null) {
-        	String[] result;
-		   		result = temp.split("\\|");
-	*/
+             
 			if (cp.ControlloFinale(termine)) {
-				//result[0];
-				/*
-				Term t = new Term(termine);
-				
-				String s = t.toString();
-		
-				textArea.append(s);
-			*/
-				System.out.println( d.getTerm(termine));
-				
-				
-			
-		
-       
-       
-    }
+			   
+				model.addElement(d.getTerm(termine));
+                 
+                  }
+    
 			else {
+				Term nt = new Term ("Parola non trovata");
+				model.addElement(nt);
 				
-				System.out.println(termine + "  parola non trovata");
 			}
-       
-       
-    }
-		
+			
 	}
-	
+	}
 	
 	
 	
