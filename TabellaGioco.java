@@ -7,6 +7,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.image.ColorModel;
@@ -15,12 +18,17 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JProgressBar;
+import javax.swing.JList;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class TabellaGioco extends JFrame {
 	
@@ -47,7 +55,7 @@ public class TabellaGioco extends JFrame {
 	 ArrayList<String> elenco = new ArrayList<>();
 	 ArrayList<String> stringabottoni = new ArrayList<>();
 	 ArrayList<JButton> bottonevalido= new ArrayList<>(); 
-	
+	 DefaultListModel<String> model = new DefaultListModel<>();
 	 
 	  String random = null;
 	  int numero;
@@ -92,13 +100,56 @@ public class TabellaGioco extends JFrame {
 	  String a, b, c, d, e, f, g, h, i, l, m, n, o, p, q, r; 
 	   
 	  private JTextField textField_1;
-
+	  private final JPanel panel = new JPanel();
+	  private final JList list = new JList(model);
 	  // Metodo per un un numero casuale 
 	  
 	  public int lancia() {  
 	    int random = rand.nextInt(6);
 	    return random;
 	}
+	
+	 /*
+	  static int temps = 120;
+	  static int secondi = 00;
+	  static int minuti = 3;
+	  
+	  static Thread tempo = new Thread() {
+		  
+		  public void run() {
+			  
+			 for(;;) {
+			     try {
+			    	 Thread.sleep(100);
+			    	 if(secondi == 00) {
+			    		 secondi = 59;
+			    		 minuti --;
+			    	 }
+			    	 seconds.setText(String.valueOf(secondi));
+			    	 secondi--;
+			    	 temps--;
+			    	 minuts.setText(String.valueOf(minuti));
+			    	 progressBar.setForeground(Color.blue);
+			    	 progressBar.setValue(temps);
+			    	 if (minuti == 00 && secondi <= 20) {
+			    		 minuts.setForeground(Color.red);
+			    		 seconds.setForeground(Color.red);
+			    		 progressBar.setForeground(Color.red);
+			    		 
+			    	 }
+			    	 
+			    	 if (minuti == 00 && secondi == 0) {
+			    		 break;
+			    		 
+			    	 }
+			     }catch(Exception e) {
+			    	 
+			    	 System.out.println("Errore");
+			     }
+			 } 
+		  }
+	 };
+	*/
 
 	  // metodo per estrarre una lettera casuale da una dado casuale
 	public  void estrazione() {
@@ -184,10 +235,7 @@ public class TabellaGioco extends JFrame {
 // creazione JFrame
 	
 	public TabellaGioco() {
-		
 		estrazione();
-	    System.out.println();
-	    
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 519, 407);
@@ -195,8 +243,6 @@ public class TabellaGioco extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		JTextArea textArea = new JTextArea();
-		textArea.setBackground(UIManager.getColor("Button.background"));
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Francesco\\Desktop\\unnamed.png"));
 		lblNewLabel.setBounds(0, 0, 529, 131);
@@ -436,8 +482,8 @@ public class TabellaGioco extends JFrame {
 			    carica();
 				attiva();
 				
-				String parola = textField_1.getText();
-				textArea.append("\n" + parola);
+				String parola = textField_1.getText().toLowerCase();
+				model.addElement(parola);
 				textField_1.setText(null);
 				elencoParole.add(parola);
 				int size = elencoParole.size();
@@ -495,30 +541,34 @@ public class TabellaGioco extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		
-		textArea.setEditable(false);
-		textArea.setBounds(10, 173, 105, 184);
-		contentPane.add(textArea);
-		
 		JLabel lblTimer = new JLabel("TIMER");
-		lblTimer.setBounds(382, 155, 46, 14);
+		lblTimer.setBounds(382, 142, 46, 14);
 		contentPane.add(lblTimer);
 		
 		JButton btnCheck = new JButton("Check");
 		btnCheck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// sputalista();
+				
 				testparola ts = new testparola(elencoParole);
 				ts.setVisible(true);
 			}
 		});
 		btnCheck.setBounds(392, 344, 89, 23);
 		contentPane.add(btnCheck);
+		panel.setBounds(0, 173, 130, 194);
+		 
+
+		contentPane.add(panel);
+		list.setBackground(SystemColor.menu);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setValue(100);
-		progressBar.setBounds(382, 173, 103, 14);
-		contentPane.add(progressBar);
+		JScrollPane scrollPane = new JScrollPane();
+        //scrollPane.setViewportView(list);
+        list.setLayoutOrientation(JList.VERTICAL);
+       //javax.swing.JFrame.add(scrollPane);
+		panel.add(list);
+		
+		
 
 
 		
@@ -541,7 +591,7 @@ public class TabellaGioco extends JFrame {
 	  
    
   // carica tutti i bottoni in una lista - 	
-  // questo metodo serve perchè quando analizziamo i vari bottoni la lista
+  // questo metodo serve perchÃ¨ quando analizziamo i vari bottoni la lista
   //viene anche svuotata
   public void carica() {
 	elencobottone.add(btn1);
@@ -656,6 +706,6 @@ public void sputalista() {
 	}
 	
 }
-}
+	  }
 
 
