@@ -706,6 +706,6 @@ public void sputalista() {
 	}
 	
 }
-	  }
+  }
 
 
