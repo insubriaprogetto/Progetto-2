@@ -1,4 +1,4 @@
-package it.uninsubria.dista.dictionary;
+package progettoProvalabB;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,9 +7,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.image.ColorModel;
@@ -18,45 +15,25 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JProgressBar;
-import javax.swing.JList;
-import java.awt.SystemColor;
-import java.awt.Font;
-import java.awt.GridLayout;
 
 public class TabellaGioco extends JFrame {
-	
-	
-	public TabellaGioco(ArrayList<String> cs) {
-		String parola;
-		int size = elencoParole.size();
-		for(int i = 0; i < size; i ++) {
-		parola = elencoParole.get(i);
-		cs.add(parola);
-			}
-	
-		}
-
-
 
 	//creazione variabili
 	
 	private JPanel contentPane;
 	 LinkedList<Integer> listint = new LinkedList<Integer>();
 	 LinkedList<JButton> elencobottone = new LinkedList<>();
-	 ArrayList<String> elencoParole = new ArrayList<>();
+	 LinkedList<String> elencoParole = new LinkedList<>();
 	 ArrayList<String[]> listadado = new ArrayList<>();
 	 ArrayList<String> elenco = new ArrayList<>();
 	 ArrayList<String> stringabottoni = new ArrayList<>();
 	 ArrayList<JButton> bottonevalido= new ArrayList<>(); 
-	 DefaultListModel<String> model = new DefaultListModel<>();
+	
 	 
 	  String random = null;
 	  int numero;
@@ -80,8 +57,8 @@ public class TabellaGioco extends JFrame {
 	  String[] Dado14= {"N","O","L","G","U","E"};
 	  String[] Dado15= {"D","C","M","P","A","E"};
 	  String[] Dado16= {"E","R","I","N","S","H"};
+	  JButton test = new JButton();
 	  
-	JButton test = new   JButton(); 
 	JButton btn2  = new  JButton();
 	JButton btn1  = new  JButton();
 	JButton btn3  = new  JButton();
@@ -101,56 +78,13 @@ public class TabellaGioco extends JFrame {
 	  String a, b, c, d, e, f, g, h, i, l, m, n, o, p, q, r; 
 	   
 	  private JTextField textField_1;
-	  private final JPanel panel = new JPanel();
-	  private final JList list = new JList(model);
+
 	  // Metodo per un un numero casuale 
 	  
 	  public int lancia() {  
 	    int random = rand.nextInt(6);
 	    return random;
 	}
-	
-	 /*
-	  static int temps = 120;
-	  static int secondi = 00;
-	  static int minuti = 3;
-	  
-	  static Thread tempo = new Thread() {
-		  
-		  public void run() {
-			  
-			 for(;;) {
-			     try {
-			    	 Thread.sleep(100);
-			    	 if(secondi == 00) {
-			    		 secondi = 59;
-			    		 minuti --;
-			    	 }
-			    	 seconds.setText(String.valueOf(secondi));
-			    	 secondi--;
-			    	 temps--;
-			    	 minuts.setText(String.valueOf(minuti));
-			    	 progressBar.setForeground(Color.blue);
-			    	 progressBar.setValue(temps);
-			    	 if (minuti == 00 && secondi <= 20) {
-			    		 minuts.setForeground(Color.red);
-			    		 seconds.setForeground(Color.red);
-			    		 progressBar.setForeground(Color.red);
-			    		 
-			    	 }
-			    	 
-			    	 if (minuti == 00 && secondi == 0) {
-			    		 break;
-			    		 
-			    	 }
-			     }catch(Exception e) {
-			    	 
-			    	 System.out.println("Errore");
-			     }
-			 } 
-		  }
-	 };
-	*/
 
 	  // metodo per estrarre una lettera casuale da una dado casuale
 	public  void estrazione() {
@@ -236,17 +170,22 @@ public class TabellaGioco extends JFrame {
 // creazione JFrame
 	
 	public TabellaGioco() {
+		
 		estrazione();
+	    System.out.println();
+	    
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 519, 407);
+		setBounds(100, 100, 478, 407);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		JTextArea textArea = new JTextArea();
+		textArea.setBackground(UIManager.getColor("Button.background"));
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Francesco\\Desktop\\unnamed.png"));
-		lblNewLabel.setBounds(0, 0, 529, 131);
+		lblNewLabel.setBounds(-16, 0, 488, 132);
 		contentPane.add(lblNewLabel);
 		
 		
@@ -483,17 +422,16 @@ public class TabellaGioco extends JFrame {
 			    carica();
 				attiva();
 				
-				String parola = textField_1.getText().toLowerCase();
-				model.addElement("                " + parola);
+				String parola = textField_1.getText();
+				textArea.append("\n" + parola);
 				textField_1.setText(null);
 				elencoParole.add(parola);
 				int size = elencoParole.size();
 				System.out.println(size);
 				
-				
 			}
 		});
-		btnConferma.setBounds(382, 242, 105, 91);
+		btnConferma.setBounds(360, 219, 105, 91);
 		contentPane.add(btnConferma);
 		
 		JLabel lblParoleTrovate = new JLabel("PAROLE TROVATE");
@@ -543,36 +481,14 @@ public class TabellaGioco extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
+		
+		textArea.setEditable(false);
+		textArea.setBounds(10, 173, 105, 184);
+		contentPane.add(textArea);
+		
 		JLabel lblTimer = new JLabel("TIMER");
-		lblTimer.setBounds(382, 142, 46, 14);
+		lblTimer.setBounds(367, 143, 46, 14);
 		contentPane.add(lblTimer);
-		
-		JButton btnCheck = new JButton("Check");
-		btnCheck.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// sputalista();
-				
-				testparola ts = new testparola(elencoParole);
-				ts.setVisible(true);
-			}
-		});
-		btnCheck.setBounds(392, 344, 89, 23);
-		contentPane.add(btnCheck);
-		panel.setBounds(0, 173, 130, 194);
-		 
-
-		contentPane.add(panel);
-		list.setBackground(SystemColor.menu);
-		
-		JScrollPane sc = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		panel.add(sc);
-        panel.setLayout(new GridLayout(0, 1, 0, 0));
-        //scrollPane.setViewportView(list);
-        list.setLayoutOrientation(JList.VERTICAL);
-       //javax.swing.JFrame.add(scrollPane);
-		//panel.add(list);
-		
-		
 
 
 		
@@ -698,18 +614,31 @@ public void posizione(int x, int y) {
         bottonevalido.get(i).setEnabled(false);
 		}
 	}
-
-public void sputalista() {
+ 
+public LinkedList<String> getElenco() {
 	
-	int size = elencoParole.size();
-	for(int i = 0 ; i < size; i++) {
-		
-		System.out.println(elencoParole.get(i));
-		
-		
-	}
+	return elencoParole;
 	
 }
-	  }
+	
+	/*	
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					
+					TabellaGioco frame = new TabellaGioco();
+		          
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	*/
+	
+}
 
 
