@@ -29,6 +29,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JList;
 import java.awt.SystemColor;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 public class TabellaGioco extends JFrame {
 	
@@ -483,7 +484,7 @@ public class TabellaGioco extends JFrame {
 				attiva();
 				
 				String parola = textField_1.getText().toLowerCase();
-				model.addElement(parola);
+				model.addElement("                " + parola);
 				textField_1.setText(null);
 				elencoParole.add(parola);
 				int size = elencoParole.size();
@@ -537,6 +538,7 @@ public class TabellaGioco extends JFrame {
 		matrice(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11,btn12,btn13,btn14,btn15,btn16);
 		
 		textField_1 = new JTextField();
+		textField_1.setEditable(false);
 		textField_1.setBounds(161, 142, 165, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
@@ -562,11 +564,13 @@ public class TabellaGioco extends JFrame {
 		contentPane.add(panel);
 		list.setBackground(SystemColor.menu);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		JScrollPane sc = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		panel.add(sc);
+        panel.setLayout(new GridLayout(0, 1, 0, 0));
         //scrollPane.setViewportView(list);
         list.setLayoutOrientation(JList.VERTICAL);
        //javax.swing.JFrame.add(scrollPane);
-		panel.add(list);
+		//panel.add(list);
 		
 		
 
@@ -706,6 +710,6 @@ public void sputalista() {
 	}
 	
 }
-  }
+	  }
 
 
