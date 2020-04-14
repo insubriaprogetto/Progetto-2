@@ -191,7 +191,7 @@ public class TabellaGioco extends JFrame {
 	    listadado.add(Dado16);
 	   
 	    
-	    System.err.println("ESTRAZIONE LETTERE");
+	    System.err.println("AVVIO PARTITA");
 	
 	    // metto 16 numeri casuali in una lista 
 	    
