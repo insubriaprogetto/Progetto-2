@@ -179,4 +179,3 @@ public class testparola extends JFrame {
 
 
 
-
