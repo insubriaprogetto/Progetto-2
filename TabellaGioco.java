@@ -65,6 +65,7 @@ public class TabellaGioco extends JFrame {
 	  int numero;
 	  int numerodado;
 	  int slot;
+	  int cont = 0;
 	  Random rand = new Random();
 	  JButton [][] matricebottoni;
 	  String[] Dado1 = {"B","A","O","O","Q","M"};
@@ -131,7 +132,7 @@ public class TabellaGioco extends JFrame {
 			 
 			 for(;;) {
 			     try {
-			    	 Thread.sleep(100);
+			    	 Thread.sleep(1000);
 			    	 if(secondi == 00) {
 			    		 secondi = 59;
 			    		 minuti --;
@@ -500,13 +501,11 @@ public class TabellaGioco extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			    carica();
 				attiva();
-				
+				cont ++;
 				String parola = textField_1.getText();
-				model.addElement("                " + parola.toUpperCase());
+				model.addElement("  "+ cont + " - " + parola.toUpperCase());
 				textField_1.setText(null);
 				elencoParole.add(parola.toLowerCase());
-				int size = elencoParole.size();
-				System.out.println(size);
 				
 				
 			}
@@ -588,7 +587,7 @@ public class TabellaGioco extends JFrame {
         seconds.setBounds(455, 198, 18, 20);
         contentPane.add(seconds);
         progressBar.setMaximum(180);
-        progressBar.setBounds(382, 161, 146, 14);
+        progressBar.setBounds(370, 173, 146, 14);
         
         contentPane.add(progressBar);
        //javax.swing.JFrame.add(scrollPane);
