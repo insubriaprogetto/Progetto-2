@@ -40,7 +40,11 @@ SELECT AVG(partita.turnidigioco, MAX numeroturni, MIN numeroturni FROM partita
 WHERE partita.terminata = true 
 GROUP BY AVG partita.turnidigioco)
 
-SELECT lettere.nome, COUNT(occcorenza) FROM lettere GROUP BY occorenza
+select nomelettera,occorenza
+from lettere
+group by nomelettera,occorenza
+order by occorenza;
+
 
 SELECT parola, idpartita, COUNT(parola) FROM verificaparole,partita
 WHERE partita.idpartita = verificaparole.idpartita
