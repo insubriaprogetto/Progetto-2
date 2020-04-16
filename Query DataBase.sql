@@ -1,13 +1,12 @@
-
-SELECT utente.id, utente.nickname , MAX(statistiche.punteggiperturno)
+SELECT utente.id, utente.nickname , statistiche.punteggiperturno
 FROM  statistiche, utente
-WHERE utente.id = statistiche.id 
+WHERE utente.id = statistiche.id and statistiche.punteggiperturno>= ALL(select punteggiperturno from statistiche)
 GROUP BY utente.id, utente.nickname,statistiche.punteggiperturno
-HAVING MAX(statistiche.punteggiperturno) = statistiche.punteggiperturno
 
-
-SELECT utente.id, utente.nickname,statistiche.id FROM  statistiche, utente
-WHERE utente.id = statistiche.id AND MAX(statistiche.punteggipartita);
+SELECT utente.id, utente.nickname, punteggipartita
+FROM statistiche, utente
+WHERE utente.id = statistiche.id and statistiche.punteggipartita>= ALL(select punteggipartita from statistiche)
+group by utente.id, punteggipartita
 
 SELECT utente.nickname, utente.id FROM utente,statistiche
 WHERE utente.id = statistiche.id AND AVG
