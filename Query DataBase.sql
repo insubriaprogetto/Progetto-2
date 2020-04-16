@@ -8,8 +8,10 @@ FROM statistiche, utente
 WHERE utente.id = statistiche.id and statistiche.punteggipartita>= ALL(select punteggipartita from statistiche)
 group by utente.id, punteggipartita
 
-SELECT utente.nickname, utente.id FROM utente,statistiche
-WHERE utente.id = statistiche.id AND AVG
+SELECT utente.id,utente.nickname, partita.punteggiopartita, partita.idpartita
+FROM utente,partita
+WHERE utente.id = partita.id 
+group by partita.punteggiopartita,partita.idpartita, utente.id,utente.nickname
 
 SELECT utente.nickname, utente.id, count(paroledublicate) FROM utente,statistiche
 WHERE utente.id = statistiche.id AND MAX(paroleduplicate);
