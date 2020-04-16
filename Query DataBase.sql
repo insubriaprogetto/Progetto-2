@@ -18,8 +18,10 @@ FROM utente,partita
 WHERE utente.id = partita.id 
 group by partita.punteggiopartita,partita.idpartita, utente.id,utente.nickname;
 
-SELECT utente.nickname, utente.id, count(paroledublicate) FROM utente,statistiche
-WHERE utente.id = statistiche.id AND MAX(paroleduplicate);
+SELECT utente.id, utente.nickname, statistiche.paroleduplicate
+FROM statistiche, utente
+WHERE utente.id = statistiche.id and statistiche.paroleduplicate>= ALL(select paroleduplicate from statistiche)
+group by utente.id,utente.nickname, statistiche.paroleduplicate;
 
 SELECT utente.nickname, utente.id, count(paroledublicate) FROM utente,statistiche
 WHERE utente.id = statistiche.id AND MAX (parolenoindizionario);
