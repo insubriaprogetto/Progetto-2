@@ -6,12 +6,18 @@ GROUP BY utente.id, utente.nickname,statistiche.punteggiperturno
 SELECT utente.id, utente.nickname, punteggipartita
 FROM statistiche, utente
 WHERE utente.id = statistiche.id and statistiche.punteggipartita>= ALL(select punteggipartita from statistiche)
-group by utente.id, punteggipartita
+group by utente.id, punteggipartita;
 
 SELECT utente.id,utente.nickname, partita.punteggiopartita, partita.idpartita
 FROM utente,partita
 WHERE utente.id = partita.id 
-group by partita.punteggiopartita,partita.idpartita, utente.id,utente.nickname
+group by partita.punteggiopartita,partita.idpartita, utente.id,utente.nickname;
+
+SELECT utente.id, utente.nickname, statistiche.numeroturni
+FROM statistiche, utente
+WHERE utente.id = statistiche.id and statistiche.numeroturni>= ALL(select numeroturni from statistiche)
+group by utente.id,utente.nickname, statistiche.numeroturni;
+
 
 SELECT utente.nickname, utente.id, count(paroledublicate) FROM utente,statistiche
 WHERE utente.id = statistiche.id AND MAX(paroleduplicate);
