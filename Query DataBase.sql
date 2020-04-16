@@ -45,10 +45,10 @@ from lettere
 group by nomelettera,occorenza
 order by occorenza;
 
-
-SELECT parola, idpartita, COUNT(parola) FROM verificaparole,partita
-WHERE partita.idpartita = verificaparole.idpartita
-GROUP BY parola 
+select parola, idpartita, occorenze
+from verificaparole
+group by parola, idpartita, occorenze
+order by occorenze;
 
 ______________________________________________________________________________
 
