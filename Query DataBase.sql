@@ -23,8 +23,10 @@ FROM statistiche, utente
 WHERE utente.id = statistiche.id and statistiche.paroleduplicate>= ALL(select paroleduplicate from statistiche)
 group by utente.id,utente.nickname, statistiche.paroleduplicate;
 
-SELECT utente.nickname, utente.id, count(paroledublicate) FROM utente,statistiche
-WHERE utente.id = statistiche.id AND MAX (parolenoindizionario);
+SELECT utente.id, utente.nickname, statistiche.parolenoindizionario
+FROM statistiche, utente
+WHERE utente.id = statistiche.id and statistiche.parolenoindizionario>= ALL(select parolenoindizionario from statistiche)
+group by utente.id,utente.nickname, statistiche.parolenoindizionario;
 
 SELECT parolevalide.parola, parolevalide.count, ORDER BY parolevalide.count FROM parolevalide
 
