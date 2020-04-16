@@ -1,5 +1,10 @@
-SELECT utente.id, utente.nickname,statistiche.id FROM  statistiche, utente
-WHERE utente.id = statistiche.id AND MAX(statistiche.punteggiperturno);
+
+SELECT utente.id, utente.nickname , MAX(statistiche.punteggiperturno)
+FROM  statistiche, utente
+WHERE utente.id = statistiche.id 
+GROUP BY utente.id, utente.nickname,statistiche.punteggiperturno
+HAVING MAX(statistiche.punteggiperturno) = statistiche.punteggiperturno
+
 
 SELECT utente.id, utente.nickname,statistiche.id FROM  statistiche, utente
 WHERE utente.id = statistiche.id AND MAX(statistiche.punteggipartita);
@@ -27,6 +32,10 @@ SELECT lettere.nome, COUNT(occcorenza) FROM lettere GROUP BY occorenza
 SELECT parola, idpartita, COUNT(parola) FROM verificaparole,partita
 WHERE partita.idpartita = verificaparole.idpartita
 GROUP BY parola 
+
+______________________________________________________________________________
+
+
 
 
 
