@@ -28,7 +28,10 @@ FROM statistiche, utente
 WHERE utente.id = statistiche.id and statistiche.parolenoindizionario>= ALL(select parolenoindizionario from statistiche)
 group by utente.id,utente.nickname, statistiche.parolenoindizionario;
 
-SELECT parolevalide.parola, parolevalide.count, ORDER BY parolevalide.count FROM parolevalide
+select parola,occorenze
+from parolevalide
+group by parola,occorenze
+order by occorenze;
 
 SELECT statistiche.maxpunteggioparola, ORDER BY maxpunteggioparola FROM statistiche
 WHERE maxpunteggioparola > 3
