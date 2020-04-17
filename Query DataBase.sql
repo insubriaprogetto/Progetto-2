@@ -73,7 +73,10 @@ select parola, idpartita
 from verificaparole
 
 12)
-
+select parola, count(parola) as occorenza
+from verificaparole
+Group by parola
+order by count(parola) desc
 
 
 
