@@ -40,6 +40,10 @@ select avg(numeroturni)
 from partita
 where partitaterminata = 'true';
 
+select max(numeroturni)as massimoturni, min(numeroturni) as minimoturni
+from partita
+where partitaterminata = 'true';
+
 select nomelettera,occorenza
 from lettere
 group by nomelettera,occorenza
