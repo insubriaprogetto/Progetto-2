@@ -36,9 +36,9 @@ order by occorenze;
 SELECT statistiche.maxpunteggioparola, ORDER BY maxpunteggioparola FROM statistiche
 WHERE maxpunteggioparola > 3
 
-SELECT AVG(partita.turnidigioco, MAX numeroturni, MIN numeroturni FROM partita
-WHERE partita.terminata = true 
-GROUP BY AVG partita.turnidigioco)
+select avg(numeroturni)
+from partita
+where partitaterminata = 'true';
 
 select nomelettera,occorenza
 from lettere
