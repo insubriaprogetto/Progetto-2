@@ -70,6 +70,14 @@ where incrementopunteggio >= 4;
 
 
 
+
+select parola, idpartita
+from verificaparole
+group by parola, idpartita
+
+
+
+
 ______________________________________________________________________________
 
 
