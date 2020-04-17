@@ -68,12 +68,11 @@ select *
 from parolevalide
 where incrementopunteggio >= 4;
 
-
-
-
+12)
 select parola, idpartita
 from verificaparole
-group by parola, idpartita
+
+12)
 
 
 
