@@ -54,7 +54,12 @@ select partita.id,  avg(punteggiogiocatore)
 from partita
 group by partita.id	
 having avg(punteggiogiocatore) >= all (select avg(punteggiogiocatore)
-											from partita );
+				from partita );
+
+
+select *
+from parolevalide
+where incrementopunteggio >= 4;
 
 
 
