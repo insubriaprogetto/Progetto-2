@@ -49,10 +49,10 @@ from lettere
 group by nomelettera,occorenza
 order by occorenza;
 
-select parola, idpartita, occorenze
-from verificaparole
-group by parola, idpartita, occorenze
-order by occorenze;
+select parola,count(parola) as occorrenze
+from parolevalide
+group by parola
+order by occorrenze
 
 select partita.id,  avg(punteggiogiocatore)
 from partita
