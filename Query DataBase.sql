@@ -54,6 +54,14 @@ from verificaparole
 group by parola, idpartita, occorenze
 order by occorenze;
 
+select partita.id,  avg(punteggiogiocatore)
+from partita
+group by partita.id	
+having avg(punteggiogiocatore) >= all (select avg(punteggiogiocatore)
+											from partita );
+
+
+
 ______________________________________________________________________________
 
 
