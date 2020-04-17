@@ -43,12 +43,12 @@ where partitaterminata = 'true';
 select nomelettera,occorenza
 from lettere
 group by nomelettera,occorenza
-order by occorenza;
+order by occorenza desc;
 
 select parola,count(parola) as occorrenze
 from parolevalide
 group by parola
-order by occorrenze;
+order by occorrenze desc ;
 
 select partita.id,  avg(punteggiogiocatore)
 from partita
