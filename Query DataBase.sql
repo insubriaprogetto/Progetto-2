@@ -71,16 +71,18 @@ where incrementopunteggio >= 4; (senno con between max and max-4)
 
 12)
 select parola, idpartita
-from verificaparole
+from parole
+where verifica = 'true';
 
-12)
+11)
 select parola, count(parola) as occorenza
-from verificaparole
+from parole
+where  verifica = 'true'
 Group by parola
-order by count(parola) desc
+order by count(parola) desc;
 
 
-
+6-7-11-12 adattate
 ______________________________________________________________________________
 
 
