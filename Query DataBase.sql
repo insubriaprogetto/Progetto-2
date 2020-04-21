@@ -67,7 +67,8 @@ having avg(punteggiogiocatore) >= all (select avg(punteggiogiocatore)
 7)
 select parola, idpartita
 from parole
-where incrementopunteggio >= 4; (senno con between max and max-4)
+where incrementopunteggio between (select max(incrementopunteggio)-4 from parole) and 
+(select max(incrementopunteggio) from parole) ;
 
 12)
 select parola, idpartita
