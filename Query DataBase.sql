@@ -65,8 +65,8 @@ having avg(punteggiogiocatore) >= all (select avg(punteggiogiocatore)
 					group by id ) ;
 
 7)
-select *
-from parolevalide
+select parola, idpartita
+from parole
 where incrementopunteggio >= 4;
 
 12)
