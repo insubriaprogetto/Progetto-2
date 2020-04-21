@@ -52,7 +52,7 @@ order by occorenza desc;
 
 6)
 select parola,count(parola) as occorrenze
-from parolevalide
+from parole
 group by parola
 order by occorrenze desc ;
 
