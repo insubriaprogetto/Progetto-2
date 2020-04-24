@@ -1,4 +1,5 @@
-package it.uninsubria.dista.dictionary;
+package bitti;
+
 
 public enum ItemType {
 	aggettivo, verbo, sostantivo_maschile, sostantivo_femminile, avverbio, congiunzione, preposizione, interiezione, other  

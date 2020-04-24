@@ -1,4 +1,5 @@
-package it.uninsubria.dista.dictionary;
+package bitti;
+
 
 public class InvalidKey extends Exception {
 

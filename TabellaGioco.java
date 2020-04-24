@@ -1,15 +1,14 @@
-package it.uninsubria.dista.dictionary;
+package bitti;
 
 import java.awt.AWTEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.sun.glass.events.WindowEvent;
+//import com.sun.glass.events.WindowEvent;
 
 //import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
@@ -65,7 +64,6 @@ public class TabellaGioco extends JFrame {
 	  int numero;
 	  int numerodado;
 	  int slot;
-	  int cont = 0;
 	  Random rand = new Random();
 	  JButton [][] matricebottoni;
 	  String[] Dado1 = {"B","A","O","O","Q","M"};
@@ -132,7 +130,7 @@ public class TabellaGioco extends JFrame {
 			 
 			 for(;;) {
 			     try {
-			    	 Thread.sleep(1000);
+			    	 Thread.sleep(100);
 			    	 if(secondi == 00) {
 			    		 secondi = 59;
 			    		 minuti --;
@@ -191,7 +189,7 @@ public class TabellaGioco extends JFrame {
 	    listadado.add(Dado16);
 	   
 	    
-	    System.err.println("AVVIO PARTITA");
+	    //System.err.println("ESTRAZIONE LETTERE");
 	
 	    // metto 16 numeri casuali in una lista 
 	    
@@ -501,11 +499,13 @@ public class TabellaGioco extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			    carica();
 				attiva();
-				cont ++;
+				
 				String parola = textField_1.getText();
-				model.addElement("  "+ cont + " - " + parola.toUpperCase());
+				model.addElement("                " + parola.toUpperCase());
 				textField_1.setText(null);
 				elencoParole.add(parola.toLowerCase());
+				//int size = elencoParole.size();
+			//System.out.println(size);
 				
 				
 			}
@@ -555,7 +555,6 @@ public class TabellaGioco extends JFrame {
 		matrice(btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn10,btn11,btn12,btn13,btn14,btn15,btn16);
 		
 		textField_1 = new JTextField();
-		textField_1.setEditable(false);
 		textField_1.setBounds(161, 142, 165, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
@@ -587,7 +586,7 @@ public class TabellaGioco extends JFrame {
         seconds.setBounds(455, 198, 18, 20);
         contentPane.add(seconds);
         progressBar.setMaximum(180);
-        progressBar.setBounds(370, 173, 146, 14);
+        progressBar.setBounds(382, 161, 146, 14);
         
         contentPane.add(progressBar);
        //javax.swing.JFrame.add(scrollPane);
@@ -616,7 +615,7 @@ public class TabellaGioco extends JFrame {
 	  
    
   // carica tutti i bottoni in una lista - 	
-  // questo metodo serve perchÃ¨ quando analizziamo i vari bottoni la lista
+  // questo metodo serve perchè quando analizziamo i vari bottoni la lista
   //viene anche svuotata
   public void carica() {
 	elencobottone.add(btn1);

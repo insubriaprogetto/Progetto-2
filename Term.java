@@ -1,4 +1,5 @@
-package it.uninsubria.dista.dictionary;
+package bitti;
+
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,6 @@
-package it.uninsubria.dista.dictionary;
+package bitti;
+
+
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package it.uninsubria.dista.dictionary;
+package bitti;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -82,7 +82,8 @@ public class Loader {
 			System.out.println(d.getTerm("studente"));
 			System.out.println(d.getTerm("studentato"));
 			System.out.println(d.getTerm("studio"));
-			System.out.println(d.getTerm("gatto"));
+			System.out.println(d.getTerm("oliva"));
+		
 
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -1,4 +1,5 @@
-package it.uninsubria.dista.dictionary;
+package bitti;
+
 
 
 import java.io.BufferedReader;
@@ -21,7 +22,7 @@ public class cercaParola  {
 	
 	
 	public  boolean ControlloFinale( String parola) throws ZipException, IOException {
-		System.out.println("--------------");
+		//System.out.println("--------------");
       
         String file_dizionario= "dict-it.oxt";
 		File dizionario=new File(file_dizionario);
