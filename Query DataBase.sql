@@ -52,7 +52,7 @@ order by occorenza desc;
 
 6)
 select parola,count(parola) as occorrenze
-from parolevalide
+from parole
 group by parola
 order by occorrenze desc ;
 
@@ -69,8 +69,10 @@ from parolevalide
 where incrementopunteggio >= 4;
 
 12)
-select parola, idpartita
-from verificaparole
+select idpartita
+from verifica
+where verifica=true
+group by idpartita
 
 12)
 select parola, count(parola) as occorenza
